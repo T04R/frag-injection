@@ -4,4 +4,4 @@
   <img src="diagram/diagram1.svg" width="90%" /><br />
 </div>
 
-We are can create multiple exe and performe the injection step in parts. 
+We are can create multiple exe and performe the injection step in parts.
