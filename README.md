@@ -28,17 +28,17 @@ A standard, well-known process injection technique (e.g., **`VirtualAllocEx`** /
 
 > This process is solely dedicated to writing the payload into the pre-allocated memory region.
 
-- **Input:** It takes the Target PID and the memory address from the previous segment.
-- **OpenProcess:** It calls OpenProcess again, this time requesting write permissions (e.g., PROCESS_VM_WRITE) on the target process using the provided PID.
-- **WriteProcessMemory:** It writes the shellcode byte-by-byte into the exact memory address within the target process that was allocated by the injector.exe.
+- `Input:` It takes the Target PID and the memory address from the previous segment.
+- `OpenProcess:` It calls OpenProcess again, this time requesting write permissions (e.g., PROCESS_VM_WRITE) on the target process using the provided PID.
+- `WriteProcessMemory:` It writes the shellcode byte-by-byte into the exact memory address within the target process that was allocated by the injector.exe.
 
 **3. Executer Process** `(executer.exe)`
 
 > This process triggers the execution of the injected shellcode.
 
-- **Iput:** It takes the same Target PID and memory address.
-- **OpenProcess:** It calls OpenProcess one final time, requesting execution permissions (e.g., PROCESS_VM_READ | PROCESS_VM_WRITE | PROCESS_CREATE_THREAD).
-- **CreateRemoteThread:** It creates a new thread in the remote (target) process that starts execution at the beginning of the allocated memory address, effectively running the shellcode.
+- `Iput:` It takes the same Target PID and memory address.
+- `OpenProcess:` It calls OpenProcess one final time, requesting execution permissions (e.g., PROCESS_VM_READ | PROCESS_VM_WRITE | PROCESS_CREATE_THREAD).
+- `CreateRemoteThread:` It creates a new thread in the remote (target) process that starts execution at the beginning of the allocated memory address, effectively running the shellcode.
 
 ---
 
@@ -56,13 +56,13 @@ A standard, well-known process injection technique (e.g., **`VirtualAllocEx`** /
 
 This pattern is not limited to classic injection. The same principle can be applied to virtually any other code execution technique (e.g., Process Hollowing, AtomBombing, Module Stomping, APC Queue Injection).
 
-· The Key: The core of this obfuscation method is to identify the critical steps of a technique and isolate them into separate binaries or execution contexts.
-· Inter-Process Communication (IPC): The segments must communicate. This can be achieved through various stealthy methods:
-  · Command-line Arguments: Passing the PID and memory address to the next process.
-  · Named Pipes / Sockets: For more advanced communication.
-  · Intermediate Files: Storing the critical data in a temporary file.
-  · Windows Registry: Storing the values in a registry key.
-  · Shared Memory Sections: Using file mapping objects for direct memory sharing.
+- The Key: The core of this obfuscation method is to identify the critical steps of a technique and isolate them into separate binaries or execution contexts.
+- Inter-Process Communication (IPC): The segments must communicate. This can be achieved through various stealthy methods:
+  - Command-line Arguments: Passing the PID and memory address to the next process.
+  - Named Pipes / Sockets: For more advanced communication.
+  - Intermediate Files: Storing the critical data in a temporary file.
+  - Windows Registry: Storing the values in a registry key.
+  - Shared Memory Sections: Using file mapping objects for direct memory sharing.
 
 The goal is to create a system where processes work together by referencing each other's memory addresses and coordinating execution, all while maintaining operational separation to evade defensive software.
 
