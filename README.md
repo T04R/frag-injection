@@ -17,30 +17,32 @@ A standard, well-known process injection technique (e.g., **`VirtualAllocEx`** /
 
 **1. Injector Process** `(injector.exe)`
 
-This process is responsible for the initial setup within the target process.
+> This process is responsible for the initial setup within the target process.
 
-- **Find** PID: It first obtains the Process ID (PID) of the target process (e.g., via CreateToolhelp32Snapshot).
+- **Find PID**: It first obtains the Process ID (PID) of the target process (e.g., via CreateToolhelp32Snapshot).
 - **OpenProcess**: It uses the acquired PID to call OpenProcess, requesting specific permissions (e.g., PROCESS_VM_OPERATION, PROCESS_QUERY_INFORMATION) to interact with the target process's memory.
 - **VirtualAllocEx**: It allocates a region of memory inside the target process's address space using VirtualAllocEx. This region will later hold the shellcode.
 - **Output**: The critical output of this process is the Target PID and the memory address returned by VirtualAllocEx. This data must be passed to the next segments (e.g., written to a file, sent via IPC, passed as a command-line argument to the next process).
 
-***2. Writer Process** `(writer.exe)`
+**2. Writer Process** `(writer.exe)`
 
-This process is solely dedicated to writing the payload into the pre-allocated memory region.
+> This process is solely dedicated to writing the payload into the pre-allocated memory region.
 
-· Input: It takes the Target PID and the memory address from the previous segment.
-· OpenProcess: It calls OpenProcess again, this time requesting write permissions (e.g., PROCESS_VM_WRITE) on the target process using the provided PID.
-· WriteProcessMemory: It writes the shellcode byte-by-byte into the exact memory address within the target process that was allocated by the injector.exe.
+- Input**: It takes the Target PID and the memory address from the previous segment.
+- OpenProcess: It calls OpenProcess again, this time requesting write permissions (e.g., PROCESS_VM_WRITE) on the target process using the provided PID.
+- WriteProcessMemory: It writes the shellcode byte-by-byte into the exact memory address within the target process that was allocated by the injector.exe.
 
-3. Executer Process (executer.exe)
+**3. Executer Process** `(executer.exe)`
 
-This process triggers the execution of the injected shellcode.
+> This process triggers the execution of the injected shellcode.
 
-· Input: It takes the same Target PID and memory address.
-· OpenProcess: It calls OpenProcess one final time, requesting execution permissions (e.g., PROCESS_VM_READ | PROCESS_VM_WRITE | PROCESS_CREATE_THREAD).
-· CreateRemoteThread: It creates a new thread in the remote (target) process that starts execution at the beginning of the allocated memory address, effectively running the shellcode.
+- **Iput:** It takes the same Target PID and memory address.
+- OpenProcess: It calls OpenProcess one final time, requesting execution permissions (e.g., PROCESS_VM_READ | PROCESS_VM_WRITE | PROCESS_CREATE_THREAD).
+- CreateRemoteThread: It creates a new thread in the remote (target) process that starts execution at the beginning of the allocated memory address, effectively running the shellcode.
 
-Why This Method is Effective Against EDR/AV
+---
+
+### Why This Method is Effective Against EDR/AV
 
 1. Behavioral Segmentation: Modern EDRs rely heavily on correlating events within a single process to detect malicious chains. This technique breaks that chain. The EDR sees:
    · Process A (e.g., a benign-looking tool) allocating memory in another process. This is a common legitimate operation.
