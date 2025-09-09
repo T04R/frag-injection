@@ -49,6 +49,8 @@ A standard, well-known process injection technique (e.g., **`VirtualAllocEx`** /
 - `OpenProcess:` It calls OpenProcess one final time, requesting execution permissions (e.g., PROCESS_VM_READ | PROCESS_VM_WRITE | PROCESS_CREATE_THREAD).
 - `CreateRemoteThread:` It creates a new thread in the remote (target) process that starts execution at the beginning of the allocated memory address, effectively running the shellcode.
 
+
+https://github.com/T04R/frag-injection/blob/main/diagrams/video0.webm
 ---
 
 ### Why This Method is Effective Against EDR/AV
