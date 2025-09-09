@@ -11,14 +11,14 @@ The fundamental idea behind this project is to deconstruct a classic process inj
 
 ### Technical Deep Dive: Deconstructing Classic Injection
 
-A standard, well-known process injection technique (e.g., `VirtualAllocEx` / `WriteProcessMemory` / ```CreateRemoteThread```) is split into three separate components:
+A standard, well-known process injection technique (e.g., `VirtualAllocEx` / `WriteProcessMemory` / `CreateRemoteThread`) is split into three separate components:
 
 1. Injector Process (injector.exe)
 
 This process is responsible for the initial setup within the target process.
 
-· Find PID: It first obtains the Process ID (PID) of the target process (e.g., via CreateToolhelp32Snapshot).
-· OpenProcess: It uses the acquired PID to call OpenProcess, requesting specific permissions (e.g., PROCESS_VM_OPERATION, PROCESS_QUERY_INFORMATION) to interact with the target process's memory.
+· **Find** PID: It first obtains the Process ID (PID) of the target process (e.g., via CreateToolhelp32Snapshot).
+· **`OpenProcess`**: It uses the acquired PID to call OpenProcess, requesting specific permissions (e.g., PROCESS_VM_OPERATION, PROCESS_QUERY_INFORMATION) to interact with the target process's memory.
 · VirtualAllocEx: It allocates a region of memory inside the target process's address space using VirtualAllocEx. This region will later hold the shellcode.
 · Output: The critical output of this process is the Target PID and the memory address returned by VirtualAllocEx. This data must be passed to the next segments (e.g., written to a file, sent via IPC, passed as a command-line argument to the next process).
 
