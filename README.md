@@ -19,10 +19,10 @@ A standard, well-known process injection technique (e.g., **`VirtualAllocEx`** /
 
 > This process is responsible for the initial setup within the target process.
 
-- **Find PID:** It first obtains the Process ID (PID) of the target process (e.g., via CreateToolhelp32Snapshot).
-- **OpenProcess:** It uses the acquired PID to call OpenProcess, requesting specific permissions (e.g., PROCESS_VM_OPERATION, PROCESS_QUERY_INFORMATION) to interact with the target process's memory.
-- **VirtualAllocEx:** It allocates a region of memory inside the target process's address space using VirtualAllocEx. This region will later hold the shellcode.
-- **Output:** The critical output of this process is the Target PID and the memory address returned by VirtualAllocEx. This data must be passed to the next segments (e.g., written to a file, sent via IPC, passed as a command-line argument to the next process).
+- `Find PID:` It first obtains the Process ID (PID) of the target process (e.g., via CreateToolhelp32Snapshot).
+- `OpenProcess:` It uses the acquired PID to call OpenProcess, requesting specific permissions (e.g., PROCESS_VM_OPERATION, PROCESS_QUERY_INFORMATION) to interact with the target process's memory.
+- `VirtualAllocEx:` It allocates a region of memory inside the target process's address space using VirtualAllocEx. This region will later hold the shellcode.
+- `Output:` The critical output of this process is the Target PID and the memory address returned by VirtualAllocEx. This data must be passed to the next segments (e.g., written to a file, sent via IPC, passed as a command-line argument to the next process).
 
 **2. Writer Process** `(writer.exe)`
 
@@ -52,7 +52,7 @@ A standard, well-known process injection technique (e.g., **`VirtualAllocEx`** /
 2. Reduced Suspicion: Each process can be designed to perform a single, specific task. The injector could be disguised as a memory profiling tool, the writer as a debugger, and the executer as a process interaction utility. This "separation of duties" appears much less suspicious than a single process performing all steps of a known injection pattern.
 3. Obscuring the Full Picture: By splitting the technique, the complete "injection story" is never visible from the perspective of any single process. This directly circumvents detection logic that looks for the entire sequence of VirtualAllocEx -> WriteProcessMemory -> CreateRemoteThread happening in quick succession from the same source.
 
-Expansion and Methodology
+**Expansion and Methodology**
 
 This pattern is not limited to classic injection. The same principle can be applied to virtually any other code execution technique (e.g., Process Hollowing, AtomBombing, Module Stomping, APC Queue Injection).
 
