@@ -64,6 +64,8 @@ This pattern is not limited to classic injection. The same principle can be appl
   - Windows Registry: Storing the values in a registry key.
   - Shared Memory Sections: Using file mapping objects for direct memory sharing.
 
+#
+
 The goal is to create a system where processes work together by referencing each other's memory addresses and coordinating execution, all while maintaining operational separation to evade defensive software.
 
 
