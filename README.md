@@ -3,7 +3,7 @@
 > The main idea
 <div align="center">
   <h1></h1>
-  <img src="diagrams/dd2.jpg" width="150%" /><br />
+  <img src="diagrams/diagram1.png" width="150%" /><br />
 </div>
 
 #
@@ -11,7 +11,7 @@
 > API relationship
 <div align="center">
   <h1></h1>
-  <img src="diagrams/dd1.jpg" width="150%" /><br />
+  <img src="diagrams/diagram0.png" width="150%" /><br />
 </div>
 
 #
