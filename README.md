@@ -6,8 +6,6 @@
   <img src="diagrams/diagram1.svg" width="150%" /><br />
 </div>
 
-#
-
 > API relationship
 <div align="center">
   <h1></h1>
