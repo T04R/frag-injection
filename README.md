@@ -11,7 +11,7 @@ The fundamental idea behind this project is to deconstruct a classic process inj
 
 ### Technical Deep Dive: Deconstructing Classic Injection
 
-A standard, well-known process injection technique (e.g., `VirtualAllocEx` / `WriteProcessMemory` / `CreateRemoteThread`) is split into three separate components:
+A standard, well-known process injection technique (e.g., `VirtualAllocEx` / `WriteProcessMemory` / <CreateRemoteThread>) is split into three separate components:
 
 1. Injector Process (injector.exe)
 
