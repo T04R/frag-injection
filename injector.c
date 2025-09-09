@@ -56,16 +56,16 @@ int main() {
 
     printf("PID: %d\n", pid);
     printf("Allocated memory at address: 0x%p\n", remoteMemory);
-    char command[256];
-
-    sleep(2);
-    snprintf(command, sizeof(command), "exe2.exe %d %p", pid ,remoteMemory);
-    printf("exec: %s\n", command);
-    system(command);
-    sleep(2);
-    snprintf(command, sizeof(command), "exe3.exe %d %p", pid ,remoteMemory);
-    printf("exec: %s\n", command);
-    system(command);
+    
+    //char command[256];
+    //sleep(2);
+    //snprintf(command, sizeof(command), "writer.exe %d %p", pid ,remoteMemory);
+    //printf("exec: %s\n", command);
+    //system(command);
+    //sleep(2);
+    //snprintf(command, sizeof(command), "executer.exe %d %p", pid ,remoteMemory);
+    //printf("exec: %s\n", command);
+    //system(command);
     getchar();
     
     CloseHandle(hProcess);    
