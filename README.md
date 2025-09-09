@@ -1,6 +1,6 @@
 # frag-injection
 
-![](diagrams/diagram1.svg)
+![500](diagrams/diagram1.svg)
 
 > The main idea
 <div align="center">
