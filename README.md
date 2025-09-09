@@ -2,7 +2,7 @@
 
 <div align="center">
   <h1></h1>
-  <img src="diagrams/diagram0.svg" width="50%" /><br />
+  <img src="diagrams/diagram0.svg" width="150%" /><br />
 </div>
 
 #
@@ -43,7 +43,7 @@ A standard, well-known process injection technique (e.g., **`VirtualAllocEx`** /
 
 <div align="center">
   <h1></h1>
-  <img src="diagrams/diagram1.svg" width="90%" /><br />
+  <img src="diagrams/diagram1.svg" width="150%" /><br />
 </div>
 
 ---
