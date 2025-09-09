@@ -2,7 +2,7 @@
 
 <div align="center">
   <h1></h1>
-  <img src="diagrams/diagram0.svg" width="150%" /><br />
+  <img src="diagrams/diagram0.svg" width="500%" /><br />
 </div>
 
 #
