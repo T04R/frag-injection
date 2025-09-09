@@ -1,19 +1,17 @@
 # frag-injection
+
 <div align="center">
   <h1></h1>
   <img src="diagrams/diagram0.svg" width="90%" /><br />
 </div>
 
-
-Process Injection Segmentation & Obfuscation
-
-Core Concept & Philosophy
+### Core Concept & Philosophy
 
 The fundamental idea behind this project is to deconstruct a classic process injection technique into discrete, isolated segments. Each segment operates independently within its own process space and communicates through shared memory pointers rather than a linear, monolithic execution flow. By fragmenting the injection lifecycle, we prevent EDR (Endpoint Detection and Response) systems and AV (Antivirus) solutions from observing the entire malicious sequence from a single process. Instead, they are presented with individual, seemingly benign operations performed by separate, unrelated processes. This significantly reduces the likelihood of detection based on behavioral analysis.
 
-🔧 Technical Deep Dive: Deconstructing Classic Injection
+### Technical Deep Dive: Deconstructing Classic Injection
 
-A standard, well-known process injection technique (e.g., VirtualAllocEx / WriteProcessMemory / CreateRemoteThread) is split into three separate components:
+A standard, well-known process injection technique (e.g., `VirtualAllocEx` / `WriteProcessMemory` / `CreateRemoteThread`) is split into three separate components:
 
 1. Injector Process (injector.exe)
 
