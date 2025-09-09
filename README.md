@@ -5,7 +5,7 @@
   <img src="diagrams/diagram0.svg" width="90%" /><br />
 </div>
 
----
+--
 
 ### Core Concept & Philosophy
 
