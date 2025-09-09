@@ -1,12 +1,12 @@
 # frag-injection
 
-![500](diagrams/diagram1.svg)
-
 > The main idea
 <div align="center">
   <h1></h1>
   <img src="diagrams/diagram1.svg" width="150%" /><br />
 </div>
+
+#
 
 > API relationship
 <div align="center">
