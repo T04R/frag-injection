@@ -9,7 +9,7 @@
 
 ### Core Concept & Philosophy
 
-The <strong>fundamental</strong> idea behind this project is to deconstruct a classic process injection technique into discrete, isolated segments. Each segment operates independently within its own process space and communicates through shared memory pointers rather than a linear, monolithic execution flow. By fragmenting the injection lifecycle, we prevent EDR (Endpoint Detection and Response) systems and AV (Antivirus) solutions from observing the entire malicious sequence from a single process. Instead, they are presented with individual, seemingly benign operations performed by separate, unrelated processes. This significantly reduces the likelihood of detection based on behavioral analysis.
+The fundamental idea behind this project is to deconstruct a classic process injection technique into discrete, isolated segments. Each segment operates independently within its own process space and communicates through shared memory pointers rather than a linear, monolithic execution flow. By fragmenting the injection lifecycle, we prevent EDR (Endpoint Detection and Response) systems and AV (Antivirus) solutions from observing the entire malicious sequence from a single process. Instead, they are presented with individual, seemingly benign operations performed by separate, unrelated processes. This significantly reduces the likelihood of detection based on behavioral analysis.
 
 ### Technical Deep Dive: Deconstructing Classic Injection
 
