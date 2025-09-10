@@ -50,7 +50,12 @@ A standard, well-known process injection technique (e.g., **`VirtualAllocEx`** /
 - `CreateRemoteThread:` It creates a new thread in the remote (target) process that starts execution at the beginning of the allocated memory address, effectively running the shellcode.
 
 
-[!video](diagrams/video0.webm)
+
+
+https://github.com/user-attachments/assets/dd5f2df2-4c31-469b-9a69-d84c03a9d13e
+
+
+
 ---
 
 ### Why This Method is Effective Against EDR/AV
