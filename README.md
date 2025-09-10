@@ -16,7 +16,7 @@
 
 #
 
-![vi](diagrams/poc0.gif)
+![vi](https://github.com/T04R/frag-injection/blob/main/diagrams/poc0.gif)
 
 ### Core Concept & Philosophy
 
