@@ -1,0 +1,79 @@
+theme = "ttox"
+
+[editor]
+true-color = true
+rulers = [85,101]
+auto-format = true
+auto-completion = true
+path-completion = true
+text-width = 2
+line-number = "absolute"
+cursorline = false
+mouse = true
+preview-completion-insert = false
+completion-trigger-len = 2
+completion-replace = true
+auto-info = true
+
+[editor.statusline]
+left = ["mode", "spinner"]
+center = ["file-name"]
+right = ["diagnostics", "selections", "position", "file-encoding", "file-line-ending", "file-type"]
+separator = "│"
+mode.normal = "NORMAL"
+mode.insert = "INSERT"
+mode.select = "SELECT"
+
+[editor.auto-pairs]
+'(' = ')'
+'{' = '}'
+'[' = ']'
+'"' = '"'
+'`' = '`'
+'<' = '>'
+
+[editor.search]
+smart-case = true
+wrap-around = true
+
+[editor.soft-wrap]
+enable = true
+max-wrap = 25 # increase value to reduce forced mid-word wrapping
+max-indent-retain = 0
+wrap-indicator = ""  # set wrap-indicator to "" to hide it
+
+[keys.normal]
+tab = "move_parent_node_end"
+S-tab = "move_parent_node_start"
+C-g = "goto_last_line"
+C-up = "page_cursor_half_up"
+C-down = "page_cursor_half_down"
+C-left = "move_prev_word_start"
+C-right = "move_next_word_end"
+C-c = "toggle_comments"
+C-s = ":write"
+C-x = ":q!"
+C-k = "kill_to_line_end"
+C-y = ":clipboard-yank"
+C-f = "file_picker"
+
+[keys.insert]
+S-tab = "move_parent_node_start"
+C-g = "goto_last_line"
+C-up = "page_cursor_half_up"
+C-down = "page_cursor_half_down"
+C-left = "move_prev_word_start"
+C-right = "move_next_word_end"
+C-c = "toggle_comments"
+C-s = ":write"
+C-x = ":q!"
+C-k = "kill_to_line_end"
+C-y = ":clipboard-yank"
+C-f = "file_picker"
+
+[keys.select]
+tab = "extend_parent_node_end"
+S-tab = "extend_parent_node_start"
+
+[editor.inline-diagnostics]
+cursor-line = "warning"

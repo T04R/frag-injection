@@ -1,0 +1,9 @@
+[package]
+name = "bar"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+get_if_addrs = "0.5"
+alsa = "0.7"
+libc = "0.2"
